@@ -157,7 +157,7 @@ The following backend responsibilities and service categories are within the sco
 **Booking Management:** The backend manages the complete booking lifecycle, including real-time room availability verification, booking record creation, status management (pending, confirmed, declined, cancelled), and historical record retention.
 
 ```mermaid
-graph TD
+graph LR
     subgraph IN_SCOPE["In Scope — Backend Responsibilities"]
         IS1["REST API Services\n11 endpoint groups"]
         IS2["JWT Authentication\n& Authorization"]
@@ -639,7 +639,7 @@ flowchart TD
 The following backend business requirements define what the system must do at the service and data processing level. Requirements are grouped by service and uniquely identified for traceability.
 
 ```mermaid
-graph LR
+graph TD
     subgraph REQ_MAP["Backend Requirements — Service Groupings"]
         R1["Auth Service\nBR-BE-01 to BR-BE-09\n9 requirements"]
         R2["User Management\nBR-BE-10 to BR-BE-14\n5 requirements"]
@@ -1138,7 +1138,7 @@ Events that shall always generate log entries include user registrations and log
 Logs shall not contain sensitive authentication data, full JWT tokens, or user passwords.
 
 ```mermaid
-graph TD
+graph LR
     subgraph EXC_FLOW["Centralized Exception Handling Flow"]
         SVC["Service Layer\nThrows typed business exception"]
         HANDLER["Global Exception Handler\n@ControllerAdvice"]
@@ -1301,7 +1301,7 @@ quadrantChart
 ```
 
 ```mermaid
-graph TD
+graph LR
     subgraph CRITICAL_R["Critical Risks — Immediate Controls Required"]
         RC1["R-BE-04: JWT Compromise\nLikelihood: Low · Impact: Very High\nMitigation: Env-secured secret · HTTPS · Short expiry · Monitoring"]
         RC2["R-BE-06: Partial Transaction Failure\nLikelihood: Low · Impact: Very High\nMitigation: DB transactions · Rollback · Atomicity guaranteed"]

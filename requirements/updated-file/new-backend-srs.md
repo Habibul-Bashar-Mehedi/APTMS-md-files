@@ -63,7 +63,7 @@ The backend system encompasses the following capability domains:
 The system is built on Java 25, Spring Boot, Spring Security, JPA/Hibernate, PostgreSQL, and Redis, and exposes all functionality through a RESTful API layer consumed by the web-based frontend client.
 
 ```mermaid
-graph TD
+graph LR
     subgraph CAP["Backend Capability Domains"]
         C1["🔐 Authentication & Authorization\nJWT · RBAC · BCrypt"]
         C2["👤 User Account Lifecycle\nTraveler · Vendor · Admin"]
@@ -178,7 +178,7 @@ The backend system delivers the following high-level functional capabilities.
 - **Admin Management:** Centralized control over all platform entities, vendor approvals, content moderation, and platform activity oversight.
 
 ```mermaid
-graph LR
+graph TD
     subgraph FUNCS["Backend Product Functions"]
         F1["Authentication & Authorization\nRegistration · Login · JWT · RBAC"]
         F2["User Management\nProfile · Status · Role admin"]
@@ -385,7 +385,7 @@ graph TD
 ### 3.2 Backend Architecture Diagram
 
 ```mermaid
-graph TB
+graph LR
     subgraph CLIENT["Web Client Layer"]
         WC[Web Browser / Angular Client]
     end
@@ -483,14 +483,14 @@ graph TB
     HS & TRS & SS & FS & MKS & ROS --> RD
     AIS -->|Outbound HTTP| AIP
 
-    style CLIENT fill:#E8F4FD,stroke:#2196F3
-    style GATEWAY fill:#FFF3E0,stroke:#FF9800
-    style CONTROLLER fill:#E8F5E9,stroke:#4CAF50
-    style SERVICE fill:#F3E5F5,stroke:#9C27B0
-    style REPOSITORY fill:#FCE4EC,stroke:#E91E63
-    style CACHE fill:#E0F2F1,stroke:#009688
-    style DATABASE fill:#E3F2FD,stroke:#1565C0
-    style EXTERNAL fill:#FFF8E1,stroke:#F9A825
+    style CLIENT fill:#E8F4FD,stroke:#2196F3,color:#000
+    style GATEWAY fill:#FFF3E0,stroke:#FF9800,color:#000
+    style CONTROLLER fill:#E8F5E9,stroke:#4CAF50,color:#000
+    style SERVICE fill:#F3E5F5,stroke:#9C27B0,color:#000
+    style REPOSITORY fill:#FCE4EC,stroke:#E91E63,color:#000
+    style CACHE fill:#E0F2F1,stroke:#009688,color:#000
+    style DATABASE fill:#E3F2FD,stroke:#1565C0,color:#000
+    style EXTERNAL fill:#FFF8E1,stroke:#F9A825,color:#000
 ```
 
 ---
@@ -578,18 +578,18 @@ graph LR
     AUTHSVC & USERSVC & HOTELSVC & ROOMSVC & BOOKSVC & TRANSVC & SPOTSVC & FOODSVC & MKTSVC & ROUTESVC & AIISVC & ADMINSVC --> PG
     AICLIENT --> AIPROVIDER
 
-    style AUTH fill:#FFF3E0,stroke:#FF9800
-    style USERMGMT fill:#E8F5E9,stroke:#4CAF50
-    style ACCOMMODATION fill:#E3F2FD,stroke:#1565C0
-    style BOOKING fill:#FCE4EC,stroke:#E91E63
-    style TRANSPORT fill:#F3E5F5,stroke:#9C27B0
-    style SPOTS fill:#E0F2F1,stroke:#009688
-    style FOOD fill:#FFF8E1,stroke:#F9A825
-    style MARKET fill:#E8EAF6,stroke:#3F51B5
-    style ROUTE fill:#EFEBE9,stroke:#795548
-    style AI fill:#E8F4FD,stroke:#2196F3
-    style ADMIN fill:#FAFAFA,stroke:#607D8B
-    style CACHE_COMP fill:#F9FBE7,stroke:#8BC34A
+    style AUTH fill:#FFF3E0,stroke:#FF9800,color:#000
+    style USERMGMT fill:#E8F5E9,stroke:#4CAF50,color:#000
+    style ACCOMMODATION fill:#E3F2FD,stroke:#1565C0,color:#000
+    style BOOKING fill:#FCE4EC,stroke:#E91E63,color:#000
+    style TRANSPORT fill:#F3E5F5,stroke:#9C27B0,color:#000
+    style SPOTS fill:#E0F2F1,stroke:#009688,color:#000
+    style FOOD fill:#FFF8E1,stroke:#F9A825,color:#000
+    style MARKET fill:#E8EAF6,stroke:#3F51B5,color:#000
+    style ROUTE fill:#EFEBE9,stroke:#795548,color:#000
+    style AI fill:#E8F4FD,stroke:#2196F3,color:#000
+    style ADMIN fill:#FAFAFA,stroke:#607D8B,color:#000
+    style CACHE_COMP fill:#F9FBE7,stroke:#8BC34A,color:#000
 ```
 
 ---
@@ -1168,7 +1168,7 @@ flowchart TD
 | **Postconditions** | Vendor account status is updated to Approved or Rejected. Approved vendors gain full access to vendor-scoped endpoints. |
 
 ```mermaid
-flowchart TD
+flowchart LR
     subgraph VENDOR_APPROVAL["FR-BE-21: Vendor Approval — Admin Module"]
         QUEUE(["Admin views pending vendor applications\nGET /admin/vendors?status=PENDING"])
         QUEUE --> REVIEW["Expand application:\nBusiness name · Contact · Docs · Date"]
@@ -1200,7 +1200,7 @@ flowchart TD
 All API endpoints return responses in JSON format. All protected endpoints require a valid JWT in the `Authorization: Bearer {token}` header.
 
 ```mermaid
-graph TD
+graph LR
     subgraph API_OVERVIEW["REST API Groups — Access Matrix"]
         subgraph PUBLIC_EP["Public (No Auth)"]
             P1["POST /auth/register"]
@@ -1885,9 +1885,9 @@ graph LR
     VENDOR --> P1 & P2 & P3 & P4 & P5
     TRAVELER --> P1 & P2 & P3 & P4 & P5 & P6 & P7 & P8 & P9 & P10 & P11
 
-    style ADMIN fill:#FFCDD2,stroke:#C62828
-    style VENDOR fill:#C8E6C9,stroke:#2E7D32
-    style TRAVELER fill:#BBDEFB,stroke:#1565C0
+    style ADMIN fill:#FFCDD2,stroke:#C62828 ,color:#000
+    style VENDOR fill:#C8E6C9,stroke:#2E7D32,color:#000
+    style TRAVELER fill:#BBDEFB,stroke:#,color:#000
 ```
 
 ### 8.3 Input Validation Requirements
@@ -2052,13 +2052,13 @@ graph TD
     AUTHZ --> ACCT[AccountInactiveException]
     EXT --> AITMO[AIProviderTimeoutException]
 
-    style BASE fill:#ECEFF1,stroke:#607D8B
-    style VAL fill:#FFF9C4,stroke:#F9A825
-    style AUTH fill:#FFCDD2,stroke:#C62828
-    style AUTHZ fill:#FFCDD2,stroke:#C62828
-    style NF fill:#E1F5FE,stroke:#0277BD
-    style CONF fill:#FCE4EC,stroke:#AD1457
-    style EXT fill:#F3E5F5,stroke:#6A1B9A
+    style BASE fill:#ECEFF1,stroke:#607D8B,color:#000
+    style VAL fill:#FFF9C4,stroke:#F9A825,color:#000
+    style AUTH fill:#FFCDD2,stroke:#C62828,color:#000
+    style AUTHZ fill:#FFCDD2,stroke:#C62828,color:#000
+    style NF fill:#E1F5FE,stroke:#0277BD,color:#000
+    style CONF fill:#FCE4EC,stroke:#AD1457,color:#000
+    style EXT fill:#F3E5F5,stroke:#6A1B9A,color:#000
 ```
 
 ---
@@ -2080,7 +2080,7 @@ graph TD
 ### 10.2 Use Case Diagram
 
 ```mermaid
-graph TB
+graph LR
     subgraph ACTORS["Actors"]
         T((Traveler))
         V((Vendor))
@@ -2144,10 +2144,10 @@ graph TB
     UC5 & UC10 & UC11 & UC12 & UC13 & UC14 -.->|uses| UC34
     UC17 & UC25 & UC26 & UC27 & UC28 & UC29 -.->|triggers| UC35
 
-    style T fill:#BBDEFB,stroke:#1565C0
-    style V fill:#C8E6C9,stroke:#2E7D32
-    style A fill:#FFCDD2,stroke:#C62828
-    style AI fill:#FFF9C4,stroke:#F9A825
+    style T fill:#BBDEFB,stroke:#1565C0,color:#000
+    style V fill:#C8E6C9,stroke:#2E7D32,color:#000
+    style A fill:#FFCDD2,stroke:#C62828,color:#000
+    style AI fill:#FFF9C4,stroke:#F9A825,color:#000
 ```
 
 ---
@@ -2551,11 +2551,11 @@ graph TD
     AI_SVC -->|reads context from| LOCAL_DOM
     AI_SVC -->|calls| AI_EXT
 
-    style USER_DOM fill:#FFF3E0,stroke:#FF9800
-    style ACCOM_DOM fill:#E3F2FD,stroke:#1565C0
-    style TRAVEL_DOM fill:#FCE4EC,stroke:#E91E63
-    style LOCAL_DOM fill:#E8F5E9,stroke:#2E7D32
-    style AI_DOM fill:#F3E5F5,stroke:#9C27B0
+    style USER_DOM fill:#FFF3E0,stroke:#FF9800,color:#000
+    style ACCOM_DOM fill:#E3F2FD,stroke:#1565C0,color:#000
+    style TRAVEL_DOM fill:#FCE4EC,stroke:#E91E63,color:#000
+    style LOCAL_DOM fill:#E8F5E9,stroke:#2E7D32,color:#000
+    style AI_DOM fill:#F3E5F5,stroke:#9C27B0,color:#000
 ```
 
 ---

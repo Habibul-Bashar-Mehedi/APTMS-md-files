@@ -1134,7 +1134,7 @@ gantt
 ```
 
 ```mermaid
-graph LR
+graph TD
     subgraph M1["Month 1"]
         M1A[User Management\nRBAC Setup]
         M1B[Vendor Registration\nAdmin Core]
